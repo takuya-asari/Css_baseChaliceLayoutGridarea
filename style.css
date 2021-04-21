@@ -1,3 +1,10 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, object, iframe, pre, code, p, blockquote, form, fieldset, legend, table, th, td, caption, tbody, tfoot, thead, article, aside, figure, footer, header, hgroup, menu, nav, section, audio, video, canvas,input[type="text" i]  {
+  margin: 0;
+  padding: 0;
+}
+article, aside, figure, figcaption, footer, h1, h2, h3, h4, h5, h6, header, hgroup, menu, nav, section {
+  display: block;
+}
 
 li{
   list-style: none;
@@ -7,10 +14,22 @@ a{
   text-decoration: none;
 }
 
+a:link, a:visited {
+  text-decoration: none;
+}
+
+a:hover, a:active {
+  text-decoration: none;
+}
+
+/* 基本設定 */
+html{
+  font-size:10px;
+}
 body{
 min-height: 100vh;
-font-size: 2rem;
-width: 100vw;
+font-size: 1rem;
+min-width: 100vw;
 padding: 0;
 margin: 0;
 }
@@ -24,13 +43,69 @@ body {
     "... ...... ...... ...... ...... ...... ...... ..."
     "... ...... left   ...... center center ...... ..." 1fr
     "... ...... ...... ...... ...... ...... ...... ..."
-    "... footer footer footer footer footer footer ..." 200px
+    "... footer footer footer footer footer footer ..." 100px
     "... ...... ...... ...... ...... ...... ...... ..."
     / auto 10vw 1fr 50px 1fr 1fr 10vw auto;
 }
 
 header {
   grid-area: header;
+}
+header div.h_container {
+  display: grid;
+  grid-template:
+      "... ...... ...... ...... ...... ...... ......  ...... ..."
+      "... notice notice notice notice notice notice  notice ..." 30px
+      "... ...... ...... ...... ...... ...... ......  ...... ..."
+      "... ...... logo   ...... nav    nav    nav     ...... ..." 50px
+      "... ...... ...... ...... ...... ...... ......  ...... ..."
+    / auto 10vw 1fr 1fr 1fr 1fr 1fr 10vw auto;
+}
+header div.h_container > div.notice{
+  grid-area: notice;
+}
+header div.h_container > div.mv{
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  width: 100vw;
+  height:70vh;
+
+}
+
+header div.h_container > div.mv img{
+  width: 100vw;
+  height:70vh;
+  object-fit: cover;
+}
+
+header div.h_container > div.logo{
+  grid-area: logo;
+  display:flex;
+  align-items:center;
+}
+
+header div.h_container > div.menu_btn{
+  display: none;
+}
+
+header div.h_container > nav.h_nav{
+  grid-area: nav;
+  display: flex;
+  justify-content:space-between;
+}
+header div.h_container > nav.h_nav ul{
+  display: flex;
+  align-items:center;
+}
+
+header div.h_container > nav.h_nav > div.base_icon{
+  display: flex;
+  align-items:center;
+}
+header div.h_container > nav.h_nav > div.base_icon div{
+
 }
 
 main {
@@ -44,6 +119,28 @@ nav {
 footer {
   grid-area: footer;
 }
+
+footer div.f_container {
+  display: grid;
+  grid-template:
+      "... ...... ...... ...... ...... ...... ......  ...... ..."
+      "... ...... f_logo ...... f_nav  f_nav  f_nav   ...... ..." 50px
+      "... ...... ...... ...... ...... ...... ......  ...... ..."
+    / auto 10vw 1fr 0.5fr 1fr 1fr 1fr 10vw auto;
+}
+footer div.f_container > div.f_logo{
+  grid-area: f_logo;
+}
+}
+footer div.f_container > nav.f_nav{
+  grid-area: f_nav;
+}
+
+footer div.copylight{
+  display: flex;
+  justify-content:center;
+}
+
 }
 
 @media (max-width: 640px) {

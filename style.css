@@ -1,0 +1,81 @@
+
+li{
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+}
+
+body{
+min-height: 100vh;
+font-size: 2rem;
+width: 100vw;
+padding: 0;
+margin: 0;
+}
+
+@media only screen and (min-width: 641px) {
+body {
+  display: grid;
+  grid-template:
+    "... ...... ...... ...... ...... ...... ...... ..."
+    "... header header header header header header ..." 150px
+    "... ...... ...... ...... ...... ...... ...... ..."
+    "... ...... left   ...... center center ...... ..." 1fr
+    "... ...... ...... ...... ...... ...... ...... ..."
+    "... footer footer footer footer footer footer ..." 200px
+    "... ...... ...... ...... ...... ...... ...... ..."
+    / auto 10vw 1fr 50px 1fr 1fr 10vw auto;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: center;
+}
+
+nav {
+  grid-area: left;
+}
+
+footer {
+  grid-area: footer;
+}
+}
+
+@media (max-width: 640px) {
+  body {
+    display: grid;
+    grid-template:
+    "... ...... ..."
+    "... header ..." 100px
+    "... ...... ..."
+    "... center ..." 1fr
+    "... ...... ..."
+    "... left   ..." 1fr
+    "... ...... ..."
+    "... footer ..." 200px
+    "... ...... ..."
+    / 3vw 1fr 3vw;
+  }
+
+  header {
+    grid-area: header;
+  }
+
+  main {
+    grid-area: center;
+  }
+
+  nav {
+    grid-area: left;
+  }
+
+  footer {
+    grid-area: footer;
+  }
+  }
+}

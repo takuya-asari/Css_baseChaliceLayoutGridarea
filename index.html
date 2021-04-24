@@ -5,31 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+
     <title>聖杯レイアウト</title>
   </head>
   <body>
+    <!-- loading -->
+    <div class="op-loading">
+      <div class="spinner"></div>
+  </div>
+
+    <div class="splashbg"></div>
+
+    <div id="container">
     <header>
       <div class="h_container">
-      <div class="notice">重要なお知らせ</div>
+      <div class="notice"><p>重要なお知らせ</p></div>
       <div class="mv"><img src="/img/1.jpg" alt=""></div>
-      <div class="logo"><h1><a href=""><img src="" alt="">rogo</a></h1></div>
-      <div class="menu_btn"><img src="" alt="">ボタン</div>
-      <nav class="h_nav">
-        <ul>
-        <li>about</li>
-        <li>blog</li>
-        <li>community</li>
-        <li>coin</li>
-        <li>contact</li>
-      </ul>
-      <div class="base_icon">
-      <div>baseアイコン</div>
-      <div>カート</div>
+
+      <div class="logo"><h1><a href=""><img src="/img/rogo.png" alt=""></a></h1></div>
+      <div class="menu_btn">
+        <button id="menu_btn_inner" class="menu_btn_inner">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       </div>
+
+      <nav id="h_nav" class="h_nav">
+        <ul>
+        <li><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger">ABOUT</a></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger">BLOG</a></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger">COIN</a></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger">COMMUNITY</a></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger">CONTACT</a></span></li>
+      </ul>
       </nav>
+
+      <div class="base_icon">
+        <div><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger"></a></span></div>
+        <div><span class="bgextend bgLRextendTrigger"><a href="#" class="bgappearTrigger"></a></span></div>
+      </div>
     </div>
     </header>
-    <nav>
+
+    <nav class="sidebar">
       <div>search</div>
       <div><h2>category</h2>
         <ul>
@@ -44,8 +63,8 @@
       <div><a href=""><img src="" alt="">バナー</a></div>
       <div><h2>blog</h2><p>テキスト</p></div>
       <div>sns</div>
-
     </nav>
+
     <main>
       <div>
         <div><a href=""><img src="" alt="">slider1</a></div>
@@ -65,17 +84,17 @@
 
     <footer>
       <div class="f_container">
-      <div class="f_logo"><a href=""><img src="" alt="">rogo</a></div>
+      <div class="f_logo"><a href=""><img src="" alt="">logo</a></div>
       <nav class="f_nav">
       <ul>
         <li>プライバシーポリシー</li>
         <li>特定商取引法に基づく表記</li>
         </ul>
-        <div>
+        <div class="foreign_currency">
           <div>日本語</div>
           <div>USD</div>
         </div>
-        <div>
+        <div class="sns">
           <div>facebook</div>
           <div>twitter</div>
         </div>
@@ -86,6 +105,11 @@
           <div><p>コピーライト</p></div>
         </div>
     </footer>
-
+  </div>
+    <script
+    src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+    crossorigin="anonymous"></script>
+    <script src="main.js"></script>
   </body>
 </html>

@@ -33,9 +33,165 @@ min-width: 100vw;
 padding: 0;
 margin: 0;
 }
+    /* loading */
+
+    .op-loading { /* ローディング画面の背景 */
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0px;
+      left: 0px;
+      background: rgba(255, 255, 255,1);
+      z-index: 9999;
+      }
+
+      .spinner {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 20px;
+      height: 20px;
+      background-color: #000;
+      margin: 100px auto;
+      -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;
+      animation: sk-rotateplane 1.2s infinite ease-in-out;
+       }
+
+       @-webkit-keyframes sk-rotateplane {
+       0% { -webkit-transform: perspective(120px) }
+       50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+       100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+      }
+
+     @keyframes sk-rotateplane {
+    0% {
+      transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+    } 50% {
+      transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+      -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+    } 100% {
+      transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+      -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    }
+     }
+
+     /*========= 画面遷移のためのCSS ===============*/
+
+/*画面遷移アニメーション*/
+.splashbg{
+  display: none;
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear .splashbg{
+  display: block;
+  content: "";
+  position:fixed;
+z-index: 999;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+left: 0;
+  transform: scaleY(0);
+  background-color: #333;/*伸びる背景色の設定*/
+animation-name:PageAnime;
+animation-duration:1.2s;
+animation-timing-function:ease-in-out;
+animation-fill-mode:forwards;
+
+}
+
+@keyframes PageAnime{
+0% {
+  transform-origin:bottom;
+  transform:scaleY(0);
+}
+50% {
+  transform-origin:bottom;
+  transform:scaleY(1);
+}
+50.001% {
+  transform-origin:top;
+}
+100% {
+  transform-origin:top;
+  transform:scaleY(0);
+}
+}
+
+/*画面遷移の後現れるコンテンツ設定*/
+
+#container{
+opacity: 0;/*はじめは透過0に*/
+}
+
+/*bodyにappearクラスがついたら出現*/
+body.appear #container{
+animation-name:PageAnimeAppear;
+animation-duration:1s;
+animation-delay: 0.8s;
+animation-fill-mode:forwards;
+opacity: 0;
+}
+
+@keyframes PageAnimeAppear{
+0% {
+opacity: 0;
+}
+100% {
+opacity: 1;
+}
+}
+
+.zoomOut{
+  animation-name:zoomOutAnime;
+  animation-duration:0.7s;
+  animation-fill-mode:forwards;
+  animation-timing-function: ease;
+}
+
+@keyframes zoomOutAnime{
+  from {
+  opacity: 0.3;
+  transform: scale(1.05);
+  }
+
+  to {
+  transform:scale(1);
+  opacity: 1;
+  }
+}
+
+
+div.notice {
+  background-color: #000;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 10px 0px;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+
+}
+div.notice p{
+ color: #fff;
+
+}
+.menu_btn,
+.menu_btn span {
+    transition: all .4s;
+    box-sizing: border-box;
+}
+
+
+
+
 
 @media only screen and (min-width: 641px) {
-body {
+body div#container {
   display: grid;
   grid-template:
     "... ...... ...... ...... ...... ...... ...... ..."
@@ -56,14 +212,18 @@ header div.h_container {
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
       "... notice notice notice notice notice notice  notice ..." 30px
+      "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
+      "... ...... h_logo ...... h_nav  h_nav  h_icon  ...... ..." 50px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
-      "... ...... logo   ...... nav    nav    nav     ...... ..." 50px
-      "... ...... ...... ...... ...... ...... ......  ...... ..."
-    / auto 10vw 1fr 1fr 1fr 1fr 1fr 10vw auto;
+    / auto 10vw 0.5fr 1fr 1fr 1fr 1fr 10vw auto;
 }
 header div.h_container > div.notice{
   grid-area: notice;
 }
+header div.h_container > div.notice p{
+  text-align: center;
+}
+
 header div.h_container > div.mv{
   position: fixed;
   top: 0;
@@ -71,7 +231,6 @@ header div.h_container > div.mv{
   z-index: -100;
   width: 100vw;
   height:70vh;
-
 }
 
 header div.h_container > div.mv img{
@@ -81,38 +240,150 @@ header div.h_container > div.mv img{
 }
 
 header div.h_container > div.logo{
-  grid-area: logo;
+  grid-area: h_logo;
   display:flex;
   align-items:center;
+}
+
+
+header div.h_container > div.logo h1 img{
+ max-width: 20vw;
+ max-height: 10vw;
 }
 
 header div.h_container > div.menu_btn{
   display: none;
 }
 
+
 header div.h_container > nav.h_nav{
-  grid-area: nav;
+  grid-area: h_nav;
   display: flex;
   justify-content:space-between;
 }
+
 header div.h_container > nav.h_nav ul{
   display: flex;
   align-items:center;
 }
 
-header div.h_container > nav.h_nav > div.base_icon{
+/*==================================================
+背景色が伸びて出現
+===================================*/
+
+/*全共通*/
+
+nav.h_nav ul li span.bgextend,
+div.base_icon div span.bgextend{
+  animation-name:bgextendAnimeBase;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  position: relative;
+  overflow: hidden;/* はみ出た色要素を隠す */
+  opacity:0;
+}
+
+@keyframes bgextendAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;
+}
+}
+
+/*中の要素*/
+nav.h_nav ul li span.bgextend a.bgappear,
+div.base_icon div span.bgextend a.bgappear{
+  animation-name:bgextendAnimeSecond;
+  animation-duration:1s;
+  animation-delay: 0.6s;
+  animation-fill-mode:forwards;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond{
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+}
+}
+
+/*左から右*/
+nav.h_nav ul li span.bgLRextend::before,
+div.base_icon div span.bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;/*伸びる背景色の設定*/
+}
+@keyframes bgLRextendAnime{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+  50.001% {
+    transform-origin:right;
+  }
+  100% {
+    transform-origin:right;
+    transform:scaleX(0);
+  }
+}
+
+nav.h_nav ul li {
+  margin-right: 2vw;
+}
+
+nav.h_nav ul li a{
+  color: #fff;
+}
+
+header div.h_container > div.base_icon {
+  grid-area: h_icon;
   display: flex;
   align-items:center;
+  justify-content: flex-end;
 }
-header div.h_container > nav.h_nav > div.base_icon div{
+header div.h_container > div.base_icon div{
+  margin-left: 2vw;
+}
+header div.h_container > div.base_icon div span{
+  display: block;
+  width: 4vw;
+  height: 4vw;
+  background-color: #fff;
+  border-radius: 50%;
+}
 
+/* スクロールをしたら出現する要素にはじめに透過0を指定 */
+nav.h_nav ul li span a.bgappearTrigger,
+nav.h_nav ul li span.bgLRextendTrigger,
+div.base_icon div span a.bgappearTrigger,
+div.base_icon div span.bgLRextendTrigger{
+    opacity: 0;
+}
+
+header div.h_container > div.base_icon div span a{
+  display: block;
 }
 
 main {
   grid-area: center;
 }
 
-nav {
+nav.sidebar {
   grid-area: left;
 }
 
@@ -128,12 +399,16 @@ footer div.f_container {
       "... ...... ...... ...... ...... ...... ......  ...... ..."
     / auto 10vw 1fr 0.5fr 1fr 1fr 1fr 10vw auto;
 }
+
 footer div.f_container > div.f_logo{
   grid-area: f_logo;
 }
-}
+
 footer div.f_container > nav.f_nav{
   grid-area: f_nav;
+  display: flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 footer div.copylight{
@@ -144,35 +419,198 @@ footer div.copylight{
 }
 
 @media (max-width: 640px) {
-  body {
+  body div#container {
     display: grid;
     grid-template:
-    "... ...... ..."
-    "... header ..." 100px
-    "... ...... ..."
-    "... center ..." 1fr
-    "... ...... ..."
-    "... left   ..." 1fr
-    "... ...... ..."
-    "... footer ..." 200px
-    "... ...... ..."
-    / 3vw 1fr 3vw;
+    "... ....... ...... ...... ..."
+    "... header  header header ..." 100px
+    "... ....... ...... ...... ..."
+    "... ....... left   ...... ..." 1fr
+    "... ....... ...... ...... ..."
+    "... ....... center ...... ...." 1fr
+    "... ....... ...... ...... ..."
+    "... footer  footer footer ..." 150px
+    "... ....... ...... ...... ..."
+    / auto 3vw 1fr 3vw auto;
   }
 
   header {
     grid-area: header;
   }
-
-  main {
-    grid-area: center;
+  header div.h_container {
+    display: grid;
+    grid-template:
+        "... ...... ...... ...... ...... ...... ......  ...... ..."
+        "... notice notice notice notice notice notice  notice ..." 30px
+        "... ...... ...... ...... ...... ...... ......  ...... ..." 7vw
+        "... ...... button ...... h_logo ...... h_icon  ...... ..." 50px
+        "... ...... ...... ...... ...... ...... ......  ...... ..."
+      / auto 3vw 1fr 1fr 1fr 1fr 1fr 3vw auto;
   }
 
-  nav {
+  header div.h_container > div.notice{
+    grid-area: notice;
+    display: flex;
+    justify-content:center;
+  }
+
+  header div.h_container > div.logo{
+    grid-area: h_logo;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+
+  header div.h_container > div.logo h1 img{
+    max-width: 40vw;
+    max-height: 30vw;
+   }
+
+  header div.h_container > div.menu_btn{
+    grid-area: button;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+  }
+
+  header div.h_container > div.base_icon{
+    grid-area: h_icon;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    display: box;
+  }
+
+  header div.h_container > div.base_icon div{
+    margin-left: 2vw;
+  }
+  header div.h_container > div.base_icon div span{
+    display: block;
+    width: 7vw;
+    height: 7vw;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+
+  header div.h_container > div.mv{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -100;
+    width: 100vw;
+    height:40vh;
+  }
+
+  header div.h_container > div.mv img{
+    width: 100vw;
+    height:40vh;
+    object-fit: cover;
+  }
+
+  .menu_btn_inner {
+    display: block;
+    width: 20px;
+    height: 12px;
+    background: none;
+    border: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 10000;
+    }
+
+    .menu_btn_inner span {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #fff;
+    border-radius: 2px;
+    }
+
+    .menu_btn_inner span:nth-of-type(1) {
+    top: 0;
+    }
+    .menu_btn_inner span:nth-of-type(2) {
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    }
+    .menu_btn_inner span:nth-of-type(3) {
+    bottom: 0;
+    }
+
+    .menu_btn_inner.active span:nth-of-type(1) {
+    transform: translateY(5.5px) rotate(-315deg);
+    }
+    .menu_btn_inner.active span:nth-of-type(2) {
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 1px solid #000;
+    }
+    .menu_btn_inner.active span:nth-of-type(3) {
+    transform: translateY(-5.5px) rotate(315deg);
+    }
+
+  header div.h_container > nav.h_nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width:calc(100% - 10vh);
+    padding: 5vh;
+    display: none;
+    background-color: #000;
+  }
+
+  header div.h_container > nav.h_nav.active{
+  display: block;
+  }
+  nav.h_nav ul li{
+    text-align: center;
+  }
+
+  nav.h_nav ul li span a{
+    color: #fff;
+    display: block;
+    padding: 20px;
+    margin: 20px;
+  }
+
+  nav.sidebar {
+    margin-top: 30vh;
     grid-area: left;
+  }
+
+  main {
+    margin-top: 5vh;
+    grid-area: center;
   }
 
   footer {
     grid-area: footer;
   }
+  footer > div.f_container{
+    margin: 0 auto;
+    text-align:center;
   }
-}
+  footer > div.f_container > nav.f_nav > div.foreign_currency{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+
+  footer > div.f_container > nav.f_nav > div.sns{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+  }
+  footer > div.copylight{
+    margin: 0 auto;
+    text-align:center;
+  }
+
+  }
+

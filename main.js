@@ -40,7 +40,7 @@ $(window).on('load', function () {
  //=====ここから背景が伸びた後に動かしたいJSをまとめたい場合は
   $('.splashbg').on('animationend', function() {
       //この中に動かしたいJSを記載
-    $('.mv , .logo').addClass('zoomOut');
+    $('.mv,.logo,#search-wrap').addClass('zoomOut');
     BgFadeAnime();
 
   });

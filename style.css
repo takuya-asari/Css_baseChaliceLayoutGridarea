@@ -32,7 +32,15 @@ font-size: 1rem;
 min-width: 100vw;
 padding: 0;
 margin: 0;
+background-color:#F7F3F3;
+letter-spacing: 2px;
 }
+
+h2{
+  font-size: 2rem;
+  margin:3vh 0;
+}
+
     /* loading */
 
     .op-loading { /* ローディング画面の背景 */
@@ -169,7 +177,6 @@ opacity: 1;
 div.notice {
   background-color: #000;
   font-size: 12px;
-  letter-spacing: 2px;
   padding: 10px 0px;
   display:flex;
   justify-content: center;
@@ -180,13 +187,22 @@ div.notice p{
  color: #fff;
 
 }
-.menu_btn,
-.menu_btn span {
-    transition: all .4s;
-    box-sizing: border-box;
-}
 
 
+  /*テキスト入力input設定*/
+  #search-text{
+    -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
+    border: none;
+    background:rgb(255, 255, 255) url("https://coco-factory.jp/ugokuweb/wp-content/themes/ugokuweb/data/7-2-3/img/icon_search.svg") no-repeat 17px center;/*虫眼鏡アイコンを背景に表示*/
+    background-size: 15px 15px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+
+    }
+    #search-wrap:hover{
+     opacity: 0.7;
+    }
 
 
 
@@ -195,13 +211,13 @@ body div#container {
   display: grid;
   grid-template:
     "... ...... ...... ...... ...... ...... ...... ..."
-    "... header header header header header header ..." 150px
-    "... ...... ...... ...... ...... ...... ...... ..."
+    "... header header header header header header ..." 50vh
+    "... ...... ...... ...... ...... ...... ...... ..." 40vh
     "... ...... left   ...... center center ...... ..." 1fr
+    "... ...... ...... ...... ...... ...... ...... ..." 4vh
+    "... footer footer footer footer footer footer ..." 10vh
     "... ...... ...... ...... ...... ...... ...... ..."
-    "... footer footer footer footer footer footer ..." 100px
-    "... ...... ...... ...... ...... ...... ...... ..."
-    / auto 10vw 1fr 50px 1fr 1fr 10vw auto;
+    / auto 10vw 1fr 5vw 1fr 1fr 10vw auto;
 }
 
 header {
@@ -212,7 +228,7 @@ header div.h_container {
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
       "... notice notice notice notice notice notice  notice ..." 30px
-      "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
+      "... ...... ...... ...... ...... ...... ......  ...... ..." 10vh
       "... ...... h_logo ...... h_nav  h_nav  h_icon  ...... ..." 50px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
     / auto 10vw 0.5fr 1fr 1fr 1fr 1fr 10vw auto;
@@ -225,17 +241,17 @@ header div.h_container > div.notice p{
 }
 
 header div.h_container > div.mv{
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: -100;
   width: 100vw;
-  height:70vh;
+  height:80vh;
 }
 
 header div.h_container > div.mv img{
   width: 100vw;
-  height:70vh;
+  height:80vh;
   object-fit: cover;
 }
 
@@ -356,9 +372,11 @@ header div.h_container > div.base_icon {
   align-items:center;
   justify-content: flex-end;
 }
+
 header div.h_container > div.base_icon div{
   margin-left: 2vw;
 }
+
 header div.h_container > div.base_icon div span{
   display: block;
   width: 4vw;
@@ -379,12 +397,65 @@ header div.h_container > div.base_icon div span a{
   display: block;
 }
 
-main {
-  grid-area: center;
+.scrolldown{
+display: flex;
+justify-self: center;
+position:absolute;
+right:10%;
+top:400px;
+height:100px;
+}
+
+.scrolldown span{
+  position:absolute;
+    top: -50px;
+color: #eee;
+-ms-writing-mode: tb-rl;
+writing-mode: vertical-rl;
+}
+
+/* 線の描写 */
+.scrolldown::after{
+content: "";
+position: absolute;
+top: 0;
+left: 8px;
+width: 1px;
+height: 200px;
+background: #eee;
+animation: pathmove 1.4s ease-in-out infinite;
+opacity:0;
+}
+
+@keyframes pathmove{
+0%{
+  height:0;
+  top:0;
+  opacity: 0;
+}
+30%{
+  height:60px;
+  opacity: 1;
+}
+100%{
+  height:0;
+  top:100px;
+  opacity: 0;
+}
 }
 
 nav.sidebar {
   grid-area: left;
+}
+
+#search-text{
+width: 18vw;
+height: 0.5vh;
+padding: 20px 50px;
+}
+
+main {
+  grid-area: center;
 }
 
 footer {
@@ -424,7 +495,7 @@ footer div.copylight{
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
-    "... ....... ...... ...... ..."
+    "... ....... ...... ...... ..." 80vh
     "... ....... left   ...... ..." 1fr
     "... ....... ...... ...... ..."
     "... ....... center ...... ...." 1fr
@@ -442,7 +513,7 @@ footer div.copylight{
     grid-template:
         "... ...... ...... ...... ...... ...... ......  ...... ..."
         "... notice notice notice notice notice notice  notice ..." 30px
-        "... ...... ...... ...... ...... ...... ......  ...... ..." 7vw
+        "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
         "... ...... button ...... h_logo ...... h_icon  ...... ..." 50px
         "... ...... ...... ...... ...... ...... ......  ...... ..."
       / auto 3vw 1fr 1fr 1fr 1fr 1fr 3vw auto;
@@ -464,6 +535,12 @@ footer div.copylight{
   header div.h_container > div.logo h1 img{
     max-width: 40vw;
     max-height: 30vw;
+   }
+
+   .menu_btn,
+   .menu_btn span {
+    transition: all .4s;
+    box-sizing: border-box;
    }
 
   header div.h_container > div.menu_btn{
@@ -493,23 +570,23 @@ footer div.copylight{
   }
 
   header div.h_container > div.mv{
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     z-index: -100;
     width: 100vw;
-    height:40vh;
+    height:90vh;
   }
 
   header div.h_container > div.mv img{
     width: 100vw;
-    height:40vh;
+    height:90vh;
     object-fit: cover;
   }
 
   .menu_btn_inner {
     display: block;
-    width: 20px;
+    width: 40px;
     height: 12px;
     background: none;
     border: none;
@@ -544,11 +621,11 @@ footer div.copylight{
     transform: translateY(5.5px) rotate(-315deg);
     }
     .menu_btn_inner.active span:nth-of-type(2) {
-    width: 20px;
-    height: 20px;
+    width: 40px;
+    height: 40px;
     background-color: transparent;
     border-radius: 50%;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     }
     .menu_btn_inner.active span:nth-of-type(3) {
     transform: translateY(-5.5px) rotate(315deg);
@@ -573,15 +650,68 @@ footer div.copylight{
   }
 
   nav.h_nav ul li span a{
+    font-size: 1.5rem;
     color: #fff;
     display: block;
-    padding: 20px;
-    margin: 20px;
+    padding: 10px;
+    margin: 50px;
   }
 
+  .scrolldown{
+    display: flex;
+    justify-self: center;
+    position:absolute;
+    right:10%;
+    top:450px;
+    height:100px;
+    }
+
+    .scrolldown span{
+    position:absolute;
+    top: -50px;
+    color: #eee;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    }
+
+    /* 線の描写 */
+    .scrolldown::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 8px;
+    width: 1px;
+    height: 200px;
+    background: #eee;
+    animation: pathmove 1.4s ease-in-out infinite;
+    opacity:0;
+    }
+
+    @keyframes pathmove{
+    0%{
+      height:0;
+      top:0;
+      opacity: 0;
+    }
+    30%{
+      height:60px;
+      opacity: 1;
+    }
+    100%{
+      height:0;
+      top:100px;
+      opacity: 0;
+    }
+    }
   nav.sidebar {
-    margin-top: 30vh;
     grid-area: left;
+  }
+
+  /*テキスト入力input設定*/
+#search-text{
+  width: calc(100vw - 6vw - 100px);
+  height: 0.5vh;
+  padding: 20px 50px;
   }
 
   main {

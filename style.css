@@ -41,6 +41,9 @@ h2{
   margin:3vh 0;
 }
 
+a{
+  color:#000;
+}
     /* loading */
 
     .op-loading { /* ローディング画面の背景 */
@@ -86,14 +89,10 @@ h2{
     }
      }
 
-     /*========= 画面遷移のためのCSS ===============*/
-
-/*画面遷移アニメーション*/
 .splashbg{
   display: none;
 }
 
-/*bodyにappearクラスがついたら出現*/
 body.appear .splashbg{
   display: block;
   content: "";
@@ -104,12 +103,11 @@ z-index: 999;
   top: 0;
 left: 0;
   transform: scaleY(0);
-  background-color: #333;/*伸びる背景色の設定*/
+  background-color: #333;
 animation-name:PageAnime;
 animation-duration:1.2s;
 animation-timing-function:ease-in-out;
 animation-fill-mode:forwards;
-
 }
 
 @keyframes PageAnime{
@@ -130,13 +128,10 @@ animation-fill-mode:forwards;
 }
 }
 
-/*画面遷移の後現れるコンテンツ設定*/
-
 #container{
 opacity: 0;/*はじめは透過0に*/
 }
 
-/*bodyにappearクラスがついたら出現*/
 body.appear #container{
 animation-name:PageAnimeAppear;
 animation-duration:1s;
@@ -188,6 +183,92 @@ div.notice p{
 
 }
 
+.white_bgextend,
+.black_bgextend{
+  animation-name:bgextendAnimeBase;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+  position: relative;
+  overflow: hidden;
+  opacity:0;
+}
+
+@keyframes bgextendAnimeBase{
+  from {
+    opacity:0;
+  }
+
+  to {
+    opacity:1;
+}
+}
+
+/*中の要素*/
+.white_bgappear,
+.black_bgappear{
+  animation-name:bgextendAnimeSecond;
+  animation-duration:1s;
+  animation-delay: 0.6s;
+  animation-fill-mode:forwards;
+  opacity: 0;
+}
+
+@keyframes bgextendAnimeSecond{
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+}
+}
+
+/*左から右*/
+.white_bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;/*伸びる背景色の設定*/
+}
+
+.black_bgLRextend::before{
+  animation-name:bgLRextendAnime;
+  animation-duration:1s;
+  animation-fill-mode:forwards;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #000;/*伸びる背景色の設定*/
+}
+
+@keyframes bgLRextendAnime{
+  0% {
+    transform-origin:left;
+    transform:scaleX(0);
+  }
+  50% {
+    transform-origin:left;
+    transform:scaleX(1);
+  }
+  50.001% {
+    transform-origin:right;
+  }
+  100% {
+    transform-origin:right;
+    transform:scaleX(0);
+  }
+}
+
+.white_bgappearTrigger,
+.white_bgLRextendTrigger,
+.black_bgappearTrigger,
+.black_bgLRextendTrigger{
+    opacity: 0;
+}
 
   /*テキスト入力input設定*/
   #search-text{
@@ -202,6 +283,69 @@ div.notice p{
     }
     #search-wrap:hover{
      opacity: 0.7;
+    }
+
+    .category_menu a:hover{
+      opacity: 0.4;
+      background:#ccc;
+    }
+    .category_menu a{
+      transition: 0.3s;
+    }
+
+    ul.category_menu li{
+      position: relative;
+    }
+
+    ul.category_menu li.has-child::before{
+      content:'';
+      position: absolute;
+      right:30px;
+      top:20px;
+      width:6px;
+      height:6px;
+      border-top: 2px solid #999;
+      border-right:2px solid #999;
+      -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    ul.category_menu ul li.has-child::before{
+      content:'';
+      position: absolute;
+      right:50px;
+      top:20px;
+      width:6px;
+      height:6px;
+      border-top: 2px solid #999;
+      border-right:2px solid #999;
+      -webkit-transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    .category_menu ul{
+      display:none;
+    }
+
+    ul.category_menu ul.active{
+      display:block;
+    }
+
+    ul.category_menu li.has-child.active::before{
+        -webkit-transform: translate(-50%, -50%) rotate(135deg);
+      transform: translate(-50%, -50%) rotate(135deg);
+    }
+
+    ul.category_menu > li > a{
+      display: block;
+      padding: 1vh 0;
+      font-size: 1.5rem;
+    }
+
+    ul.category_menu > li > ul > li a{
+      display: block;
+      padding: 1vh 0;
+      font-size: 1.2rem;
     }
 
 
@@ -283,81 +427,6 @@ header div.h_container > nav.h_nav ul{
   align-items:center;
 }
 
-/*==================================================
-背景色が伸びて出現
-===================================*/
-
-/*全共通*/
-
-nav.h_nav ul li span.bgextend,
-div.base_icon div span.bgextend{
-  animation-name:bgextendAnimeBase;
-  animation-duration:1s;
-  animation-fill-mode:forwards;
-  position: relative;
-  overflow: hidden;/* はみ出た色要素を隠す */
-  opacity:0;
-}
-
-@keyframes bgextendAnimeBase{
-  from {
-    opacity:0;
-  }
-
-  to {
-    opacity:1;
-}
-}
-
-/*中の要素*/
-nav.h_nav ul li span.bgextend a.bgappear,
-div.base_icon div span.bgextend a.bgappear{
-  animation-name:bgextendAnimeSecond;
-  animation-duration:1s;
-  animation-delay: 0.6s;
-  animation-fill-mode:forwards;
-  opacity: 0;
-}
-
-@keyframes bgextendAnimeSecond{
-  0% {
-  opacity: 0;
-  }
-  100% {
-  opacity: 1;
-}
-}
-
-/*左から右*/
-nav.h_nav ul li span.bgLRextend::before,
-div.base_icon div span.bgLRextend::before{
-  animation-name:bgLRextendAnime;
-  animation-duration:1s;
-  animation-fill-mode:forwards;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;/*伸びる背景色の設定*/
-}
-@keyframes bgLRextendAnime{
-  0% {
-    transform-origin:left;
-    transform:scaleX(0);
-  }
-  50% {
-    transform-origin:left;
-    transform:scaleX(1);
-  }
-  50.001% {
-    transform-origin:right;
-  }
-  100% {
-    transform-origin:right;
-    transform:scaleX(0);
-  }
-}
-
 nav.h_nav ul li {
   margin-right: 2vw;
 }
@@ -385,13 +454,6 @@ header div.h_container > div.base_icon div span{
   border-radius: 50%;
 }
 
-/* スクロールをしたら出現する要素にはじめに透過0を指定 */
-nav.h_nav ul li span a.bgappearTrigger,
-nav.h_nav ul li span.bgLRextendTrigger,
-div.base_icon div span a.bgappearTrigger,
-div.base_icon div span.bgLRextendTrigger{
-    opacity: 0;
-}
 
 header div.h_container > div.base_icon div span a{
   display: block;
@@ -401,9 +463,11 @@ header div.h_container > div.base_icon div span a{
 display: flex;
 justify-self: center;
 position:absolute;
-right:10%;
-top:400px;
+right:5vw;
+top:65vh;
 height:100px;
+-webkit-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
 }
 
 .scrolldown span{
@@ -495,7 +559,7 @@ footer div.copylight{
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
-    "... ....... ...... ...... ..." 80vh
+    "... ....... ...... ...... ..." 90vh
     "... ....... left   ...... ..." 1fr
     "... ....... ...... ...... ..."
     "... ....... center ...... ...." 1fr
@@ -661,9 +725,11 @@ footer div.copylight{
     display: flex;
     justify-self: center;
     position:absolute;
-    right:10%;
-    top:450px;
+    right:5vw;
+    top:75vh;
     height:100px;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     }
 
     .scrolldown span{

@@ -2,26 +2,30 @@
     function BgFadeAnime(){
 
       // 背景色が伸びて出現（左から右）
-      $('.bgLRextendTrigger').each(function(){ //bgLRextendTriggerというクラス名が
-      var elemPos = $(this).offset().top-50;//要素より、50px上の
+      $('.white_bgLRextendTrigger, .black_bgLRextendTrigger').each(function(){
+      var elemPos = $('.white_bgLRextendTrigger, .black_bgLRextendTrigger').offset().top-50;//要素より、50px上の
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
       if (scroll >= elemPos - windowHeight){
-        $(this).addClass('bgLRextend');// 画面内に入ったらbgLRextendというクラス名を追記
+        $('.white_bgLRextendTrigger').addClass('white_bgLRextend');
+        $('.black_bgLRextendTrigger').addClass('black_bgLRextend');
       }else{
-        $(this).removeClass('bgLRextend');// 画面外に出たらbgLRextendというクラス名を外す
+        $('.white_bgLRextendTrigger').removeClass('white_bgLRextend');
+        $('.black_bgLRextendTrigger').removeClass('black_bgLRextend');
       }
     });
 
      // 文字列を囲う子要素
-    $('.bgappearTrigger').each(function(){ //bgappearTriggerというクラス名が
-      var elemPos = $(this).offset().top-50;//要素より、50px上の
+    $('.white_bgappearTrigger,.black_bgappearTrigger').each(function(){
+      var elemPos = $('.white_bgappearTrigger,.black_bgappearTrigger').offset().top-50;//要素より、50px上の
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
       if (scroll >= elemPos - windowHeight){
-        $(this).addClass('bgappear');// 画面内に入ったらbgappearというクラス名を追記
+        $('.white_bgappearTrigger').addClass('white_bgappear');
+        $('.black_bgappearTrigger').addClass('black_bgappear');
       }else{
-        $(this).removeClass('bgappear');// 画面外に出たらbgappearというクラス名を外す
+        $('.white_bgappearTrigger').removeClass('white_bgappear');
+        $('.black_bgappearTrigger').removeClass('black_bgappear');
       }
     });
 };
@@ -44,20 +48,35 @@ $(window).on('load', function () {
     BgFadeAnime();
 
   });
-  //=====ここまで背景が伸びた後に動かしたいJSをまとめる
 });
 
-// 画面をスクロールをしたら動かしたい場合の記述
-$(window).scroll(function (){
-  BgFadeAnime();
-});
+
 
  // ハンバーガーメニュー
 document.getElementById('menu_btn_inner').onclick = function(){
 var element = document.getElementById("h_nav");
 element.classList.toggle('active');
-// var element = document.getElementById("h_search");
-// element.classList.toggle('active');
 var element = document.getElementById("menu_btn_inner");
 element.classList.toggle('active');
 };
+
+ // ドロップダウンメニュー
+ function mediaQueriesWin(){
+    $(".has-child>a").off('click'); //has-childクラスがついたaタグのonイベントを複数登録を避ける為offにして一旦初期状態へ
+    $(".has-child>a").on('click', function() {//has-childクラスがついたaタグをクリックしたら
+      var parentElem =  $(this).parent();// aタグから見た親要素の<li>を取得し
+      $(parentElem).toggleClass('active');//矢印方向を変えるためのクラス名を付与して
+      $(parentElem).children('ul').stop().slideToggle(500);//liの子要素のスライドを開閉させる※数字が大きくなるほどゆっくり開く
+      return false;//リンクの無効化
+    });
+ }
+
+ // ページが読み込まれたらすぐに動かしたい場合の記述
+ $(window).on('load',function(){
+  mediaQueriesWin();
+ });
+
+ // 画面をスクロールをしたら動かしたい場合の記述
+ $(window).scroll(function (){
+  BgFadeAnime();
+});

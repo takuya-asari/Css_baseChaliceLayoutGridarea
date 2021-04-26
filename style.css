@@ -314,7 +314,7 @@ div.notice p{
       content:'';
       position: absolute;
       right:50px;
-      top:20px;
+      top:15px;
       width:6px;
       height:6px;
       border-top: 2px solid #999;
@@ -332,22 +332,27 @@ div.notice p{
     }
 
     ul.category_menu li.has-child.active::before{
-        -webkit-transform: translate(-50%, -50%) rotate(135deg);
+      -webkit-transform: translate(-50%, -50%) rotate(135deg);
       transform: translate(-50%, -50%) rotate(135deg);
     }
 
     ul.category_menu > li > a{
       display: block;
-      padding: 1vh 0;
+      padding: 1vh 1vw;
       font-size: 1.5rem;
     }
 
     ul.category_menu > li > ul > li a{
       display: block;
-      padding: 1vh 0;
+      padding: 1vh 1.5vw;
       font-size: 1.2rem;
     }
 
+    ul.category_menu > li > ul > li > ul > li a{
+      display: block;
+      padding: 1vh 2vw;
+      font-size: 1.2rem;
+    }
 
 
 @media only screen and (min-width: 641px) {
@@ -513,9 +518,15 @@ nav.sidebar {
 }
 
 #search-text{
-width: 18vw;
+max-width: 300px;
+width: 20vw;
 height: 0.5vh;
 padding: 20px 50px;
+}
+
+.side_banner{
+ object-fit: cover;
+ margin: 1vw 0;
 }
 
 main {

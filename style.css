@@ -183,8 +183,27 @@ div.notice p{
 
 }
 
-.white_bgextend,
-.black_bgextend{
+.fadeUp{
+  animation-name:fadeUpAnime;
+  animation-duration:0.7s;
+  animation-fill-mode:forwards;
+  animation-timing-function:ease-in-out;
+  opacity:0;
+  }
+
+  @keyframes fadeUpAnime{
+    from {
+      opacity: 0;
+    transform: translateY(50px);
+    }
+
+    to {
+      opacity: 1;
+    transform: translateY(0);
+    }
+  }
+
+.bgextend{
   animation-name:bgextendAnimeBase;
   animation-duration:1s;
   animation-fill-mode:forwards;
@@ -204,8 +223,7 @@ div.notice p{
 }
 
 /*中の要素*/
-.white_bgappear,
-.black_bgappear{
+.bgappear{
   animation-name:bgextendAnimeSecond;
   animation-duration:1s;
   animation-delay: 0.6s;
@@ -223,7 +241,7 @@ div.notice p{
 }
 
 /*左から右*/
-.white_bgLRextend::before{
+.bgLRextend::before{
   animation-name:bgLRextendAnime;
   animation-duration:1s;
   animation-fill-mode:forwards;
@@ -234,7 +252,8 @@ div.notice p{
     background-color: #fff;/*伸びる背景色の設定*/
 }
 
-.black_bgLRextend::before{
+div.base_icon div span.bgLRextend::before,
+h2 span.bgLRextend::before{
   animation-name:bgLRextendAnime;
   animation-duration:1s;
   animation-fill-mode:forwards;
@@ -263,11 +282,44 @@ div.notice p{
   }
 }
 
-.white_bgappearTrigger,
-.white_bgLRextendTrigger,
-.black_bgappearTrigger,
-.black_bgLRextendTrigger{
+.bgappearTrigger,
+.bgLRextendTrigger{
     opacity: 0;
+}
+
+.zoomInRotate img{
+  transform: scale(1);
+  transition: .3s ease-in-out;
+}
+
+.zoomInRotate a:hover img{
+  transform:rotate(2deg) scale(1.05);
+}
+
+/*画像のマスク*/
+.mask{
+    display: block;
+    line-height: 0;/*行の高さを0にする*/
+    overflow: hidden;/*拡大してはみ出る要素を隠す*/
+}
+
+.swiper-container {
+  width: 46vw;
+  height: 340px;
+  box-shadow: rgb(187, 187, 187);
+}
+
+.swiper-wrapper{
+  width: 300px;
+  height: 200px;
+}
+.swiper-slide img{
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 20px;
+  width: 300px;
+  height: 200px;
 }
 
   /*テキスト入力input設定*/
@@ -279,8 +331,8 @@ div.notice p{
     outline: none;
     cursor: pointer;
     border-radius: 5px;
-
     }
+
     #search-wrap:hover{
      opacity: 0.7;
     }

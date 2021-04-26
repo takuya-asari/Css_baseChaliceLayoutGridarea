@@ -10,36 +10,48 @@ function mediaQueriesWin(){
 };
 
 // 文字の背景アニメーション
-    function TextBgFadeAnime(){
+    function fadeAnime(){
 
       // 背景色が伸びて出現（左から右）
-      $('.white_bgLRextendTrigger, .black_bgLRextendTrigger').each(function(){
-      var elemPos = $('.white_bgLRextendTrigger, .black_bgLRextendTrigger').offset().top;
+      $('.bgLRextendTrigger').each(function(){
+      var elemPos = $(this).offset().top-50;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll > elemPos - windowHeight + 400){
-        $('.white_bgLRextendTrigger').addClass('white_bgLRextend');
-        $('.black_bgLRextendTrigger').addClass('black_bgLRextend');
+      if (scroll >= elemPos - windowHeight + 100){
+        $(this).addClass('bgLRextend');
       }else{
-        $('.white_bgLRextendTrigger').removeClass('white_bgLRextend');
-        $('.black_bgLRextendTrigger').removeClass('black_bgLRextend');
+        $(this).removeClass('bgLRextend');
       }
     });
 
      // 文字列を囲う子要素
-    $('.white_bgappearTrigger,.black_bgappearTrigger').each(function(){
-      var elemPos = $('.white_bgappearTrigger,.black_bgappearTrigger').offset().top;
+    $('.bgappearTrigger').each(function(){
+      var elemPos = $(this).offset().top-50;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll > elemPos - windowHeight + 400){
-        $('.white_bgappearTrigger').addClass('white_bgappear');
-        $('.black_bgappearTrigger').addClass('black_bgappear');
+      if (scroll >= elemPos - windowHeight + 100){
+        $(this).addClass('bgappear');
       }else{
-        $('.white_bgappearTrigger').removeClass('white_bgappear');
-        $('.black_bgappearTrigger').removeClass('black_bgappear');
+        $(this).removeClass('bgappear');
       }
     });
+
+    $('.fadeUpTrigger').each(function(){
+      var elemPos = $(this).offset().top-50;
+      var scroll = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      if (scroll >= elemPos - windowHeight + 100){
+      $(this).addClass('fadeUp');
+      }else{
+      $(this).removeClass('fadeUp');
+      }
+      });
 };
+
+ // 画面をスクロールをしたら動かしたい場合の記述
+ $(window).scroll(function (){
+  fadeAnime();
+});
 
 $(window).on('load', function () {
   $(".op-loading").delay(1200).fadeOut('slow');
@@ -48,16 +60,12 @@ $(window).on('load', function () {
   });
   $('.splashbg').on('animationend', function() {
       //この中に動かしたいJSを記載
-    $('.mv,.logo,#search-wrap').addClass('zoomOut');
+    $('.mv,.logo').addClass('zoomOut');
     mediaQueriesWin();
-    TextBgFadeAnime();
+    fadeAnime();
   });
 });
 
- // 画面をスクロールをしたら動かしたい場合の記述
- $(window).scroll(function (){
-
-});
  // ハンバーガーメニュー
 document.getElementById('menu_btn_inner').onclick = function(){
 var element = document.getElementById("h_nav");
@@ -66,3 +74,23 @@ var element = document.getElementById("menu_btn_inner");
 element.classList.toggle('active');
 };
 
+ // スライドショー
+const swiper = new Swiper('.swiper-container', {
+  centeredSlides: true,
+  loop: true,
+  autoplay: true,
+  slidePerView: 1.2,
+  spaceBetween: 10,
+  speed: 800,
+  delay: 1000,
+
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});

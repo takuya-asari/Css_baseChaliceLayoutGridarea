@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <link rel="stylesheet" href="style.css" />
 
     <title>聖杯レイアウト</title>
@@ -32,17 +33,17 @@
 
       <nav id="h_nav" class="h_nav">
         <ul>
-        <li><span class="white_bgextend white_bgLRextendTrigger"><a href="#" class="white_bgappearTrigger">ABOUT</a></span></li>
-        <li><span class="white_bgextend white_bgLRextendTrigger"><a href="#" class="white_bgappearTrigger">BLOG</a></span></li>
-        <li><span class="white_bgextend white_bgLRextendTrigger"><a href="#" class="white_bgappearTrigger">COIN</a></span></li>
-        <li><span class="white_bgextend white_bgLRextendTrigger"><a href="#" class="white_bgappearTrigger">COMMUNITY</a></span></li>
-        <li><span class="white_bgextend white_bgLRextendTrigger"><a href="#" class="white_bgappearTrigger">CONTACT</a></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#">ABOUT</a></span></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#">BLOG</a></span></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#">COIN</a></span></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#">COMMUNITY</a></span></span></li>
+        <li><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#">CONTACT</a></span></span></li>
       </ul>
       </nav>
 
       <div class="base_icon">
-        <div><span class="black_bgextend black_bgLRextendTrigger"><a href="#" class="black_bgappearTrigger"></a></span></div>
-        <div><span class="black_bgextend black_bgLRextendTrigger"><a href="#" class="black_bgappearTrigger"></a></span></div>
+        <div><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#"></a></span></span></div>
+        <div><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger"><a href="#"></a></span></span></div>
       </div>
     </div>
     </header>
@@ -50,13 +51,13 @@
     <div class="scrolldown" ><span class="right-to-left">SCROLL</span></div>
 
     <nav class="sidebar">
-      <div id="search-wrap">
+      <div id="search-wrap" class="fadeUpTrigger">
         <form role="search" method="get" action="">
         <input type="text" value="" name="" placeholder="すべてのアイテムから探す" id="search-text">
         </form>
         </div>
-      <div class="category"><div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">カテゴリーから探す</h2></div>
-      <ul class="category_menu">
+      <div class="category"><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">カテゴリーから探す</span></span></h2></div>
+      <ul class="category_menu fadeUpTrigger">
           <li><a href="#">親カテゴリー</a></li>
           <li><a href="#">親カテゴリー</a></li>
           <li class="has-child"><a href="#">親カテゴリー</a>
@@ -85,29 +86,38 @@
             </ul>
           </li>
         </ul>
-    </div>
-      <div class="side_banner"><a href=""><img src="/img/banner300600.png" alt="バナー"></a></div>
-      <div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">about</h2><p>テキスト</p></div>
-      <div><a href=""><img src="" alt="">バナー</a></div>
-      <div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">blog</h2><p>テキスト</p></div>
+      <div class="side_banner fadeUpTrigger zoomInRotate"><a href=""><span class="mask"><img src="/img/banner300600.png" alt="バナー"></a></span></div>
+      <div><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">about</span></span></h2><p>テキスト</p></div>
+      <div class="side_banner_second fadeUpTrigger"><a href=""><img src="" alt="">バナー</a></div>
+      <div><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">blog</span></span></h2><p>テキスト</p></div>
       <div>sns</div>
     </nav>
 
     <main>
-      <div>
-        <div><a href=""><img src="" alt="">slider1</a></div>
-        <div><a href=""><img src="" alt="">slider2</a></div>
-        <div><a href=""><img src="" alt="">slider3</a></div>
-      </div>
-      <div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">features</h2><a href=""><img src="" alt="">バナー</a></div>
-      <div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">pick up</h2><a href=""><img src="" alt="">バナー</a></div>
-      <div class="black_bgextend black_bgLRextendTrigger"><h2 class="black_bgappearTrigger">product</h2>
-        <div>
+      <div class="fadeUpTrigger">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+    <div class="swiper-slide slide1"><img src="/img/slide1.jpg" alt="スライド1"></div>
+    <div class="swiper-slide slide2"><img src="/img/slide2.jpg" alt="スライド2"></div>
+    <div class="swiper-slide slide3"><img src="/img/slide1.jpg" alt="スライド3"></div>
+    <div class="swiper-slide slide4"><img src="/img/slide2.jpg" alt="スライド4"></div>
+    <div class="swiper-slide slide5"><img src="/img/slide1.jpg" alt="スライド5"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div>
+  </div>
+  </div>
+      <div><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">features</span></span></h2><a href=""><img src="" alt="">バナー</a></div>
+      <div><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">pick up</span></span></h2><a href=""><img src="" alt="">バナー</a></div>
+      <div><h2><span class="bgextend bgLRextendTrigger"><span  class="bgappearTrigger">product</span></span></h2>
+        <div class="fadeUpTrigger">
         <div><a href=""><img src="" alt="">アイテム1</a><p>テキスト</p></div>
         <div><a href=""><img src="" alt="">アイテム2</a><p>テキスト</p></div>
         <div><a href=""><img src="" alt="">アイテム3</a><p>テキスト</p></div>
         <div><a href=""><img src="" alt="">アイテム4</a><p>テキスト</p></div>
       </div>
+    </div>
     </main>
 
     <footer>
@@ -138,6 +148,7 @@
     src="https://code.jquery.com/jquery-1.12.4.min.js"
     integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
     crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="main.js"></script>
   </body>
 </html>

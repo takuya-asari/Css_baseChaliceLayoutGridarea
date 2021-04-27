@@ -176,11 +176,10 @@ div.notice {
   display:flex;
   justify-content: center;
   align-items:center;
-
 }
+
 div.notice p{
  color: #fff;
-
 }
 
 .fadeUp{
@@ -303,21 +302,24 @@ h2 span.bgLRextend::before{
     line-height: 0;/*行の高さを0にする*/
     overflow: hidden;/*拡大してはみ出る要素を隠す*/
 }
+
+
+
 .swiper-container {
+  margin: 0;
   width: 46vw;
-  height: 290px;
+  height: 26vh;
   overflow: hidden;
 }
 
 .swiper-wrapper {
   width: 46vw;
-  height: 250px;
+  height: 22vh;
   overflow: visible;
 }
 
 .swiper-slide img{
-  width: 400px;
-  height: 250px;
+  width: 31vw;
   object-fit: cover;
 }
 
@@ -327,7 +329,14 @@ div.swiper-slide{
   box-shadow: 2px 4px 10px rgb(0 0 0 / 25%);
 }
 
-div.features a div span img{
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  border: 2px solid #fff;
+  background-color: rgba(153, 153, 153, 0.589);
+}
+
+div.features_img a span.mask{
+  border-radius: 2vw;
   width: 46vw;
 }
 
@@ -339,7 +348,7 @@ div.features a div span img{
     background-size: 15px 15px;
     outline: none;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 1vh;
     }
 
     #search-wrap:hover{
@@ -415,6 +424,10 @@ div.features a div span img{
       font-size: 1.2rem;
     }
 
+footer{
+  background-color:#efefef;
+}
+
 
 @media only screen and (min-width: 641px) {
 body div#container {
@@ -429,6 +442,12 @@ body div#container {
     "... ...... ...... ...... ...... ...... ...... ..."
     / auto 10vw 1fr 5vw 1fr 1fr 10vw auto;
 }
+
+p{
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  text-align:justify;
+ }
 
 header {
   grid-area: header;
@@ -471,10 +490,12 @@ header div.h_container > div.logo{
   align-items:center;
 }
 
-
 header div.h_container > div.logo h1 img{
- max-width: 20vw;
- max-height: 10vw;
+ max-width: 250px;
+ max-height: 100px;
+ width: 20vw;
+ height: 10vw;
+ object-fit: contain;
 }
 
 header div.h_container > div.menu_btn{
@@ -497,6 +518,11 @@ nav.h_nav ul li {
   margin-right: 2vw;
 }
 
+li.h_contact a{
+  border: 1px solid #fff;
+  padding: 0.7vw;
+}
+
 nav.h_nav ul li a{
   color: #fff;
 }
@@ -514,6 +540,8 @@ header div.h_container > div.base_icon div{
 
 header div.h_container > div.base_icon div span{
   display: block;
+  max-width: 50px;
+  max-height: 50px;
   width: 4vw;
   height: 4vw;
   background-color: #fff;
@@ -579,19 +607,90 @@ nav.sidebar {
 }
 
 #search-text{
-max-width: 300px;
-width: 20vw;
+max-width: calc(300px -  100px);
+width: 25vw;
 height: 0.5vh;
 padding: 20px 50px;
 }
 
+ul.category_menu{
+  max-width: 300px;
+}
+
 .side_banner{
+ max-width: 300px;
  object-fit: cover;
  margin: 1vw 0;
 }
 
+.about_img{
+  max-width: 300px;
+  width: 32vw;
+}
+
+.about_img img{
+  max-width: 300px;
+  width: 32vw;
+}
+
+div.about p{
+ margin-top: 2vh;
+ max-width: 300px;
+ width: 32vw;
+}
+
+div.side_banner_second{
+  margin-top: 2vh;
+  max-width: 300px;
+}
+div.side_banner_second img{
+  margin-top: 2vh;
+  max-width: 300px;
+}
+
+div.blog_p{
+  margin-top: 2vh;
+  max-width: 300px;
+  width: 32vw;
+}
+
+div.blog_p a div p.blog_date{
+  margin-bottom: 0.5vh;
+  color: #999;
+}
+
 main {
   grid-area: center;
+}
+
+div.features  div a span img{
+  width: 46vw;
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 1.5rem;
+  padding: 1vw;
+}
+
+.pickup_img_wrapper{
+  width: 46vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pickup_img_wrapper div.pickup_img{
+  width: 13vw;
+  height: 30vh;
+ }
+
+.pickup_img_wrapper div.pickup_img a span{
+ border-radius: 10px;
+}
+.pickup_img_wrapper div.pickup_img a span img{
+  object-fit: cover;
+  width: 100%;
 }
 
 footer {
@@ -602,13 +701,13 @@ footer div.f_container {
   display: grid;
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
-      "... ...... f_logo ...... f_nav  f_nav  f_nav   ...... ..." 50px
+      "... ...... f_contact ...... f_nav  f_nav  f_nav   ...... ..." 50px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
     / auto 10vw 1fr 0.5fr 1fr 1fr 1fr 10vw auto;
 }
 
-footer div.f_container > div.f_logo{
-  grid-area: f_logo;
+footer div.f_container > div.f_contact{
+  grid-area: f_contact;
 }
 
 footer div.f_container > nav.f_nav{

@@ -76,13 +76,14 @@ element.classList.toggle('active');
 
  // スライドショー
 const swiper = new Swiper('.swiper-container', {
-  centeredSlides: true,
   loop: true,
   autoplay: true,
-  slidePerView: 1.2,
-  spaceBetween: 10,
+  slidesPerView: 1.5,
+  centeredSlides: true,
+  spaceBetween:25,
   speed: 800,
   delay: 1000,
+
 
   pagination: {
     el: '.swiper-pagination',

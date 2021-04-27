@@ -287,13 +287,14 @@ h2 span.bgLRextend::before{
     opacity: 0;
 }
 
-.zoomInRotate img{
+.zoomIn img{
   transform: scale(1);
   transition: .3s ease-in-out;
 }
 
-.zoomInRotate a:hover img{
-  transform:rotate(2deg) scale(1.05);
+.zoomIn a:hover img{
+  opacity: 0.7;
+  transform: scale(1.03);
 }
 
 /*画像のマスク*/
@@ -302,24 +303,32 @@ h2 span.bgLRextend::before{
     line-height: 0;/*行の高さを0にする*/
     overflow: hidden;/*拡大してはみ出る要素を隠す*/
 }
-
 .swiper-container {
   width: 46vw;
-  height: 340px;
-  box-shadow: rgb(187, 187, 187);
+  height: 290px;
+  overflow: hidden;
 }
 
-.swiper-wrapper{
-  width: 300px;
-  height: 200px;
+.swiper-wrapper {
+  width: 46vw;
+  height: 250px;
+  overflow: visible;
 }
+
 .swiper-slide img{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+}
+
+div.swiper-slide{
+  overflow: hidden;
   border-radius: 20px;
-  width: 300px;
-  height: 200px;
+  box-shadow: 2px 4px 10px rgb(0 0 0 / 25%);
+}
+
+div.features a div span img{
+  width: 46vw;
 }
 
   /*テキスト入力input設定*/

@@ -170,7 +170,7 @@ opacity: 1;
 
 
 div.notice {
-  background-color: #000;
+  background-color: rgba(172, 172, 172, 0.637);
   font-size: 12px;
   padding: 10px 0px;
   display:flex;
@@ -184,20 +184,17 @@ div.notice p{
 
 .fadeUp{
   animation-name:fadeUpAnime;
-  animation-duration:0.7s;
+  animation-duration:1s;
   animation-fill-mode:forwards;
   animation-timing-function:ease-in-out;
-  opacity:0;
   }
 
   @keyframes fadeUpAnime{
     from {
-      opacity: 0;
     transform: translateY(50px);
     }
 
     to {
-      opacity: 1;
     transform: translateY(0);
     }
   }
@@ -326,7 +323,7 @@ h2 span.bgLRextend::before{
 div.swiper-slide{
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 2px 4px 10px rgb(0 0 0 / 25%);
+  box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
 }
 
 .swiper-button-next:after,
@@ -338,6 +335,7 @@ div.swiper-slide{
 div.features_img a span.mask{
   border-radius: 2vw;
   width: 46vw;
+  box-shadow:rgb(0 0 0 / 10%) 1px 1px 10px;
 }
 
   /*テキスト入力input設定*/
@@ -437,8 +435,8 @@ body div#container {
     "... header header header header header header ..." 50vh
     "... ...... ...... ...... ...... ...... ...... ..." 40vh
     "... ...... left   ...... center center ...... ..." 1fr
-    "... ...... ...... ...... ...... ...... ...... ..." 4vh
-    "... footer footer footer footer footer footer ..." 10vh
+    "... ...... ...... ...... ...... ...... ...... ..." 20vh
+    "... footer footer footer footer footer footer ..." 20vh
     "... ...... ...... ...... ...... ...... ...... ..."
     / auto 10vw 1fr 5vw 1fr 1fr 10vw auto;
 }
@@ -547,7 +545,6 @@ header div.h_container > div.base_icon div span{
   background-color: #fff;
   border-radius: 50%;
 }
-
 
 header div.h_container > div.base_icon div span a{
   display: block;
@@ -675,11 +672,15 @@ div.features  div a span img{
 
 .pickup_img_wrapper{
   width: 46vw;
+  height: 37vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
+div.pickup{
+  height: 45vh;
+  margin-bottom: 20px;
+}
 .pickup_img_wrapper div.pickup_img{
   width: 13vw;
   height: 30vh;
@@ -687,6 +688,7 @@ div.features  div a span img{
 
 .pickup_img_wrapper div.pickup_img a span{
  border-radius: 10px;
+ box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
 }
 .pickup_img_wrapper div.pickup_img a span img{
   object-fit: cover;
@@ -698,6 +700,7 @@ footer {
 }
 
 footer div.f_container {
+  margin-top: 20px;
   display: grid;
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
@@ -708,6 +711,27 @@ footer div.f_container {
 
 footer div.f_container > div.f_contact{
   grid-area: f_contact;
+  display: flex;
+  align-items: center;
+}
+.f_contact a{
+  font-size: 1.2rem;
+  background-color: #000;
+  font-weight: bold;
+  color: #fff;
+  padding: 15px 50px;
+  border: 2px solid #000;
+  box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+}
+
+.f_contact a:hover{
+  color: #000;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+div.copyright{
+  margin-top: 20px;
 }
 
 footer div.f_container > nav.f_nav{
@@ -717,7 +741,7 @@ footer div.f_container > nav.f_nav{
   align-items:center;
 }
 
-footer div.copylight{
+footer div.copyright{
   display: flex;
   justify-content:center;
 }
@@ -974,7 +998,7 @@ footer div.copylight{
     justify-content: center;
     align-items:center;
   }
-  footer > div.copylight{
+  footer > div.copyright{
     margin: 0 auto;
     text-align:center;
   }

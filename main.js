@@ -14,10 +14,10 @@ function mediaQueriesWin(){
 
       // 背景色が伸びて出現（左から右）
       $('.bgLRextendTrigger').each(function(){
-      var elemPos = $(this).offset().top-50;
+      var elemPos = $(this).offset().top-100;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll >= elemPos - windowHeight + 100){
+      if (scroll >= elemPos - windowHeight){
         $(this).addClass('bgLRextend');
       }else{
         $(this).removeClass('bgLRextend');
@@ -26,10 +26,10 @@ function mediaQueriesWin(){
 
      // 文字列を囲う子要素
     $('.bgappearTrigger').each(function(){
-      var elemPos = $(this).offset().top-50;
+      var elemPos = $(this).offset().top-100;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll >= elemPos - windowHeight + 100){
+      if (scroll >= elemPos - windowHeight){
         $(this).addClass('bgappear');
       }else{
         $(this).removeClass('bgappear');
@@ -37,10 +37,10 @@ function mediaQueriesWin(){
     });
 
     $('.fadeUpTrigger').each(function(){
-      var elemPos = $(this).offset().top-50;
+      var elemPos = $(this).offset().top-100;
       var scroll = $(window).scrollTop();
       var windowHeight = $(window).height();
-      if (scroll >= elemPos - windowHeight + 100){
+      if (scroll >= elemPos - windowHeight){
       $(this).addClass('fadeUp');
       }else{
       $(this).removeClass('fadeUp');

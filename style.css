@@ -38,7 +38,6 @@ letter-spacing: 2px;
 
 h2{
   font-size: 2rem;
-  margin:3vh 0;
 }
 
 a{
@@ -297,33 +296,24 @@ h2 span.bgLRextend::before{
 .mask{
     display: block;
     line-height: 0;/*行の高さを0にする*/
-    overflow: hidden;/*拡大してはみ出る要素を隠す*/
+    overflow: hidden;
 }
 
 
-
+/*swiper*/
 .swiper-container {
-  margin: 0;
-  width: 46vw;
-  height: 26vh;
-  overflow: hidden;
-}
-
-.swiper-wrapper {
-  width: 46vw;
-  height: 22vh;
+  width: 100%;
   overflow: visible;
 }
 
-.swiper-slide img{
-  width: 31vw;
-  object-fit: cover;
-}
-
 div.swiper-slide{
-  overflow: hidden;
   border-radius: 20px;
   box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+  overflow: hidden;
+}
+
+.swiper-slide img{
+  height: 100%;
 }
 
 .swiper-button-next:after,
@@ -334,7 +324,6 @@ div.swiper-slide{
 
 div.features_img a span.mask{
   border-radius: 2vw;
-  width: 46vw;
   box-shadow:rgb(0 0 0 / 10%) 1px 1px 10px;
 }
 
@@ -433,18 +422,25 @@ body div#container {
   grid-template:
     "... ...... ...... ...... ...... ...... ...... ..."
     "... header header header header header header ..." 50vh
-    "... ...... ...... ...... ...... ...... ...... ..." 40vh
+    "... ...... ...... ...... ...... ...... ...... ..." 35vh
+    "... slider slider slider slider slider slider ..." 18vh
+    "... ...... ...... ...... ...... ...... ...... ..." 6vh
     "... ...... left   ...... center center ...... ..." 1fr
     "... ...... ...... ...... ...... ...... ...... ..." 20vh
     "... footer footer footer footer footer footer ..." 20vh
     "... ...... ...... ...... ...... ...... ...... ..."
-    / auto 10vw 1fr 5vw 1fr 1fr 10vw auto;
+    / auto 10vw 0.7fr 30px 1fr 1fr 10vw auto;
 }
 
 p{
   font-size: 1.2rem;
   line-height: 2.4rem;
   text-align:justify;
+ }
+
+ h2{
+   max-width: 300px;
+   margin:2vh 0;
  }
 
 header {
@@ -554,7 +550,7 @@ header div.h_container > div.base_icon div span a{
 display: flex;
 justify-self: center;
 position:absolute;
-right:5vw;
+left:20px;
 top:65vh;
 height:100px;
 -webkit-transform: translate(-50%, -50%);
@@ -562,8 +558,8 @@ transform: translate(-50%, -50%);
 }
 
 .scrolldown span{
-  position:absolute;
-    top: -50px;
+position:absolute;
+top: -50px;
 color: #eee;
 -ms-writing-mode: tb-rl;
 writing-mode: vertical-rl;
@@ -599,8 +595,30 @@ opacity:0;
 }
 }
 
+div.sns_wrapper{
+  border-top: 10px solid #000;
+  border-bottom: 10px solid #000;
+  position: fixed;
+  top: 230px;
+  right: 0px;
+  background-color: #F8F3F3;
+  z-index: 100000;
+  padding: 20px;
+  box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+}
+
+div.sns_wrapper a span img{
+  padding: 20px 0;
+}
+
+
+.swiper-container{
+  grid-area: slider;
+}
+
 nav.sidebar {
   grid-area: left;
+  max-width: 300px;
 }
 
 #search-text{
@@ -660,8 +678,18 @@ main {
   grid-area: center;
 }
 
+div.features h2{
+  margin: 0;
+  margin-bottom: 2vh;
+
+}
+
+div.features_img a span.mask{
+  width: auto;
+}
+
 div.features  div a span img{
-  width: 46vw;
+  width: 100%;
 }
 
 .swiper-button-next:after,
@@ -671,25 +699,29 @@ div.features  div a span img{
 }
 
 .pickup_img_wrapper{
-  width: 46vw;
-  height: 37vh;
+  width: auto;
+  height: auto;
   display: flex;
   justify-content: space-between;
 }
 
-div.pickup{
-  height: 45vh;
-  margin-bottom: 20px;
-}
 .pickup_img_wrapper div.pickup_img{
-  width: 13vw;
-  height: 30vh;
+  display: block;
+  margin-left: 10px;
+ }
+
+ .pickup_img_wrapper div.pickup_img:first-child{
+  margin-left: 0;
  }
 
 .pickup_img_wrapper div.pickup_img a span{
- border-radius: 10px;
+ border-radius: 20px;
  box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+
 }
+
+
+
 .pickup_img_wrapper div.pickup_img a span img{
   object-fit: cover;
   width: 100%;
@@ -935,7 +967,6 @@ footer div.copyright{
     writing-mode: vertical-rl;
     }
 
-    /* 線の描写 */
     .scrolldown::after{
     content: "";
     position: absolute;
@@ -964,11 +995,13 @@ footer div.copyright{
       opacity: 0;
     }
     }
+
+
+
   nav.sidebar {
     grid-area: left;
   }
 
-  /*テキスト入力input設定*/
 #search-text{
   width: calc(100vw - 6vw - 100px);
   height: 0.5vh;

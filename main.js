@@ -78,7 +78,7 @@ element.classList.toggle('active');
 const swiper = new Swiper('.swiper-container', {
   loop: true,
   autoplay: true,
-  slidesPerView: 1.5,
+  slidesPerView: 5.5,
   centeredSlides: true,
   spaceBetween:25,
   speed: 800,

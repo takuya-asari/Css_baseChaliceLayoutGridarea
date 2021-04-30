@@ -301,11 +301,9 @@ h2 span.bgLRextend::before{
     overflow: hidden;
 }
 
-
 /*swiper*/
 .swiper-container {
   width: 100%;
-  overflow: visible;
 }
 
 div.swiper-slide{
@@ -459,6 +457,7 @@ header {
   grid-area: header;
 }
 header div.h_container {
+  width: 100%;
   display: grid;
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
@@ -621,6 +620,7 @@ div.sns_wrapper a span img{
 
 .swiper-container{
   grid-area: slider;
+    overflow: visible;
 }
 
 .swiper-container-horizontal>.swiper-pagination-bullets{
@@ -729,7 +729,7 @@ div.features_img a span.mask{
   width: 100%;
 }
 
-.item_wapper{
+.item_wrapper{
  display: flex;
  flex-wrap: wrap;
  justify-content: space-between;
@@ -825,12 +825,12 @@ footer div.copyright{
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
-    "... ....... ...... ...... ..." 90vh
-    "... slider  slider slider ..." 20vh
-    "... ....... ...... ...... ..." 10vh
-    "... ....... left   ...... ..." 1fr
-    "... ....... ...... ...... ..."
+    "... ....... ...... ...... ..." 84vh
+    "... slider  slider slider ..." 24vh
+    "... ....... ...... ...... ..." 4vh
     "... ....... center ...... ..." 1fr
+    "... ....... ...... ...... ..."
+    "... ....... left   ...... ..." 1fr
     "... ....... ...... ...... ..."
     "... .......  sns   ...... ..." 150px
     "... ....... ...... ...... ..." 150px
@@ -1037,17 +1037,22 @@ footer div.copyright{
       opacity: 0;
     }
     }
-    .swiper-container{
+.swiper-container{
       grid-area: slider;
-    }
+}
   nav.sidebar {
+    width: 100%;
     grid-area: left;
   }
 
 #search-text{
-  width: calc(100vw - 6vw);
+  width: calc(100vw - 6vw - 100px);
   height: 1vh;
   padding: 20px 50px;
+  }
+
+  .category{
+    width: 100%;
   }
 
   .category_menu{
@@ -1092,26 +1097,92 @@ footer div.copyright{
    }
 
   main {
-    margin-top: 5vh;
     grid-area: center;
     width: 100%;
   }
-
+  div.features{
+    width: 100%;
+  }
   div.features_img{
     width: 100%;
   }
+  div.features div a span img{
+    object-fit: cover;
+    width: 30%;
+  }
 
-  div.pickup_img{
+  .pickup_img_wrapper{
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pickup_img_wrapper div.pickup_img{
+    display: block;
+    margin-left: 10px;
+   }
+
+   .pickup_img_wrapper div.pickup_img:first-child{
+    margin-left: 0;
+   }
+
+  .pickup_img_wrapper div.pickup_img a span{
+   border-radius: 20px;
+   box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+  }
+
+  .pickup_img_wrapper div.pickup_img a span img{
+    object-fit: cover;
     width: 100%;
   }
 
-  div.item_wapper{
+  div.item_wrapper{
     width: 100%;
   }
+
+  .item_wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction : column;
+   }
+   .item_img{
+     width: 50%;
+   }
+   .item_img a span{
+    border-radius: 20px;
+    box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+   }
+   .item_img a span img{
+     width: 100%;
+   }
+
+   .item_text{
+     margin: 10px 0;
+   }
+   p.item_name{
+    font-weight: 700;
+   }
+
+   p.item_price{
+     font-size: 1.5rem;
+     font-weight: 700;
+    }
+
+   p.discount{
+     color: rgb(255, 66, 66);
+    }
+
+    p.item_membersOnly{
+     font-size: 0.3rem;
+     color: #999;
+    }
+
 
   .sns_wrapper{
     grid-area: sns;
     width: 100%;
+    display: flex;
   }
 
   footer {

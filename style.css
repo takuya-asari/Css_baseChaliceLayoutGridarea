@@ -25,6 +25,7 @@ a:hover, a:active {
 /* 基本設定 */
 html{
   font-size:10px;
+  overflow-x: hidden;
 }
 body{
 min-height: 100vh;
@@ -178,6 +179,7 @@ div.notice {
 }
 
 div.notice p{
+ text-align: center;
  color: #fff;
 }
 
@@ -327,6 +329,10 @@ div.features_img a span.mask{
   box-shadow:rgb(0 0 0 / 10%) 1px 1px 10px;
 }
 
+div.features  div a span img{
+  width: 100%;
+}
+
   /*テキスト入力input設定*/
   #search-text{
     -webkit-appearance:none;/*SafariやChromeのデフォルトの設定を無効*/
@@ -443,6 +449,12 @@ p{
    margin:2vh 0;
  }
 
+ h2 span span span{
+  font-size: 1.2rem;
+  color: #999;
+  font-weight: 400;
+ }
+
 header {
   grid-area: header;
 }
@@ -458,9 +470,6 @@ header div.h_container {
 }
 header div.h_container > div.notice{
   grid-area: notice;
-}
-header div.h_container > div.notice p{
-  text-align: center;
 }
 
 header div.h_container > div.mv{
@@ -495,7 +504,6 @@ header div.h_container > div.logo h1 img{
 header div.h_container > div.menu_btn{
   display: none;
 }
-
 
 header div.h_container > nav.h_nav{
   grid-area: h_nav;
@@ -599,21 +607,24 @@ div.sns_wrapper{
   border-top: 10px solid #000;
   border-bottom: 10px solid #000;
   position: fixed;
-  top: 230px;
+  top: 200px;
   right: 0px;
-  background-color: #F8F3F3;
+  background-color: #f8f3f363;
   z-index: 100000;
-  padding: 20px;
+  padding: 10px;
   box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
 }
 
 div.sns_wrapper a span img{
-  padding: 20px 0;
+  padding: 10px 0;
 }
-
 
 .swiper-container{
   grid-area: slider;
+}
+
+.swiper-container-horizontal>.swiper-pagination-bullets{
+  bottom: -20px;
 }
 
 nav.sidebar {
@@ -659,7 +670,6 @@ div.side_banner_second{
   max-width: 300px;
 }
 div.side_banner_second img{
-  margin-top: 2vh;
   max-width: 300px;
 }
 
@@ -681,15 +691,10 @@ main {
 div.features h2{
   margin: 0;
   margin-bottom: 2vh;
-
 }
 
 div.features_img a span.mask{
   width: auto;
-}
-
-div.features  div a span img{
-  width: 100%;
 }
 
 .swiper-button-next:after,
@@ -717,15 +722,49 @@ div.features  div a span img{
 .pickup_img_wrapper div.pickup_img a span{
  border-radius: 20px;
  box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
-
 }
-
-
 
 .pickup_img_wrapper div.pickup_img a span img{
   object-fit: cover;
   width: 100%;
 }
+
+.item_wapper{
+ display: flex;
+ flex-wrap: wrap;
+ justify-content: space-between;
+}
+.item_img{
+  width: 48%;
+}
+.item_img a span{
+ border-radius: 20px;
+ box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+}
+.item_img a span img{
+  width: 100%;
+}
+
+.item_text{
+  margin: 10px 0;
+}
+p.item_name{
+ font-weight: 700;
+}
+
+p.item_price{
+  font-size: 1.5rem;
+  font-weight: 700;
+ }
+
+p.discount{
+  color: rgb(255, 66, 66);
+ }
+
+ p.item_membersOnly{
+  font-size: 0.3rem;
+  color: #999;
+ }
 
 footer {
   grid-area: footer;
@@ -787,10 +826,14 @@ footer div.copyright{
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
     "... ....... ...... ...... ..." 90vh
+    "... slider  slider slider ..." 20vh
+    "... ....... ...... ...... ..." 10vh
     "... ....... left   ...... ..." 1fr
     "... ....... ...... ...... ..."
-    "... ....... center ...... ...." 1fr
+    "... ....... center ...... ..." 1fr
     "... ....... ...... ...... ..."
+    "... .......  sns   ...... ..." 150px
+    "... ....... ...... ...... ..." 150px
     "... footer  footer footer ..." 150px
     "... ....... ...... ...... ..."
     / auto 3vw 1fr 3vw auto;
@@ -812,8 +855,6 @@ footer div.copyright{
 
   header div.h_container > div.notice{
     grid-area: notice;
-    display: flex;
-    justify-content:center;
   }
 
   header div.h_container > div.logo{
@@ -852,6 +893,7 @@ footer div.copyright{
   header div.h_container > div.base_icon div{
     margin-left: 2vw;
   }
+
   header div.h_container > div.base_icon div span{
     display: block;
     width: 7vw;
@@ -995,22 +1037,81 @@ footer div.copyright{
       opacity: 0;
     }
     }
-
-
-
+    .swiper-container{
+      grid-area: slider;
+    }
   nav.sidebar {
     grid-area: left;
   }
 
 #search-text{
-  width: calc(100vw - 6vw - 100px);
-  height: 0.5vh;
+  width: calc(100vw - 6vw);
+  height: 1vh;
   padding: 20px 50px;
   }
+
+  .category_menu{
+    width: 100%;
+  }
+
+  .side_banner{
+    max-width: 100%;
+    object-fit: cover;
+    margin: 1vw 0;
+   }
+
+   .about_img{
+     max-width: 100%;
+   }
+
+   .about_img img{
+    max-width: 100%;
+   }
+
+   div.about p{
+    margin-top: 2vh;
+    max-width: 100%;
+   }
+
+   div.side_banner_second{
+     margin-top: 2vh;
+     max-width: 100%;
+   }
+   div.side_banner_second img{
+     max-width: 100%;
+   }
+
+   div.blog_p{
+     margin-top: 2vh;
+     max-width: 100%;
+   }
+
+   div.blog_p a div p.blog_date{
+     margin-bottom: 0.5vh;
+     color: #999;
+   }
 
   main {
     margin-top: 5vh;
     grid-area: center;
+    width: 100%;
+  }
+
+  div.features_img{
+    width: 100%;
+  }
+
+  div.pickup_img{
+    width: 100%;
+  }
+
+  div.item_wapper{
+    width: 100%;
+  }
+
+  .sns_wrapper{
+    grid-area: sns;
+    width: 100%;
   }
 
   footer {

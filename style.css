@@ -44,6 +44,13 @@ h2{
 a{
   color:#000;
 }
+
+p{
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+  text-align:justify;
+ }
+
     /* loading */
 
     .op-loading { /* ローディング画面の背景 */
@@ -182,6 +189,16 @@ div.notice p{
  text-align: center;
  color: #fff;
 }
+
+h2{
+  margin:2vh 0;
+}
+
+h2 span span span{
+  font-size: 1.2rem;
+  color: #999;
+  font-weight: 400;
+ }
 
 .fadeUp{
   animation-name:fadeUpAnime;
@@ -322,12 +339,16 @@ div.swiper-slide{
   background-color: rgba(153, 153, 153, 0.589);
 }
 
+.swiper-container-horizontal > .swiper-pagination-bullets{
+  bottom: -20px;
+}
+
 div.features_img a span.mask{
   border-radius: 2vw;
   box-shadow:rgb(0 0 0 / 10%) 1px 1px 10px;
 }
 
-div.features  div a span img{
+div.features div a span img{
   width: 100%;
 }
 
@@ -427,7 +448,7 @@ body div#container {
     "... ...... ...... ...... ...... ...... ...... ..."
     "... header header header header header header ..." 50vh
     "... ...... ...... ...... ...... ...... ...... ..." 35vh
-    "... slider slider slider slider slider slider ..." 18vh
+    "... slider slider slider slider slider slider ..." 36vh
     "... ...... ...... ...... ...... ...... ...... ..." 6vh
     "... ...... left   ...... center center ...... ..." 1fr
     "... ...... ...... ...... ...... ...... ...... ..." 20vh
@@ -435,23 +456,6 @@ body div#container {
     "... ...... ...... ...... ...... ...... ...... ..."
     / auto 10vw 0.7fr 30px 1fr 1fr 10vw auto;
 }
-
-p{
-  font-size: 1.2rem;
-  line-height: 2.4rem;
-  text-align:justify;
- }
-
- h2{
-   max-width: 300px;
-   margin:2vh 0;
- }
-
- h2 span span span{
-  font-size: 1.2rem;
-  color: #999;
-  font-weight: 400;
- }
 
 header {
   grid-area: header;
@@ -620,11 +624,7 @@ div.sns_wrapper a span img{
 
 .swiper-container{
   grid-area: slider;
-    overflow: visible;
-}
-
-.swiper-container-horizontal>.swiper-pagination-bullets{
-  bottom: -20px;
+  overflow: visible;
 }
 
 nav.sidebar {
@@ -645,9 +645,15 @@ ul.category_menu{
 
 .side_banner{
  max-width: 300px;
+ max-height: 600px;
  object-fit: cover;
  margin: 1vw 0;
 }
+
+.side_banner a span img{
+  max-width: 300px;
+  max-height: 600px;
+ }
 
 .about_img{
   max-width: 300px;
@@ -820,23 +826,26 @@ footer div.copyright{
 }
 
 @media (max-width: 640px) {
+  body{
+    overflow: hidden;
+  }
   body div#container {
     display: grid;
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
     "... ....... ...... ...... ..." 84vh
-    "... slider  slider slider ..." 24vh
+    "... slider  slider slider ..." 34vh
     "... ....... ...... ...... ..." 4vh
     "... ....... center ...... ..." 1fr
     "... ....... ...... ...... ..."
-    "... ....... left   ...... ..." 1fr
+    "... ....... left   ...... ..." 0.25fr
     "... ....... ...... ...... ..."
     "... .......  sns   ...... ..." 150px
-    "... ....... ...... ...... ..." 150px
-    "... footer  footer footer ..." 150px
+    "... ....... ...... ...... ..." 100px
+    "... footer  footer footer ..." 650px
     "... ....... ...... ...... ..."
-    / auto 3vw 1fr 3vw auto;
+    / auto 5vw 1fr 5vw auto;
   }
 
   header {
@@ -850,7 +859,7 @@ footer div.copyright{
         "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
         "... ...... button ...... h_logo ...... h_icon  ...... ..." 50px
         "... ...... ...... ...... ...... ...... ......  ...... ..."
-      / auto 3vw 1fr 1fr 1fr 1fr 1fr 3vw auto;
+      / auto 5vw 1fr 1fr 1fr 1fr 1fr 5vw auto;
   }
 
   header div.h_container > div.notice{
@@ -887,7 +896,7 @@ footer div.copyright{
     display:flex;
     justify-content: center;
     align-items:center;
-    display: box;
+    display:box;
   }
 
   header div.h_container > div.base_icon div{
@@ -1037,16 +1046,29 @@ footer div.copyright{
       opacity: 0;
     }
     }
+
 .swiper-container{
       grid-area: slider;
+      overflow: visible;
 }
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  font-size: 2.5rem;
+  padding: 3vw;
+}
+
   nav.sidebar {
     width: 100%;
     grid-area: left;
   }
 
+  #search-wrap{
+  margin-top: 20px;
+  }
+
 #search-text{
-  width: calc(100vw - 6vw - 100px);
+  width: calc(100vw - 10vw - 100px);
   height: 1vh;
   padding: 20px 50px;
   }
@@ -1062,8 +1084,17 @@ footer div.copyright{
   .side_banner{
     max-width: 100%;
     object-fit: cover;
-    margin: 1vw 0;
+    margin: 5vw 0;
    }
+
+   .side_banner a{
+    display: block;
+    margin: 0 auto;
+   }
+
+   .side_banner a span img{
+     max-width: calc(100vw - 10vw);
+    }
 
    .about_img{
      max-width: 100%;
@@ -1107,8 +1138,8 @@ footer div.copyright{
     width: 100%;
   }
   div.features div a span img{
+    height: 100%;
     object-fit: cover;
-    width: 30%;
   }
 
   .pickup_img_wrapper{
@@ -1146,15 +1177,13 @@ footer div.copyright{
     flex-wrap: wrap;
     flex-direction : column;
    }
-   .item_img{
-     width: 50%;
-   }
+
    .item_img a span{
     border-radius: 20px;
     box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
    }
    .item_img a span img{
-     width: 100%;
+     max-width: 100%;
    }
 
    .item_text{
@@ -1178,11 +1207,18 @@ footer div.copyright{
      color: #999;
     }
 
-
   .sns_wrapper{
     grid-area: sns;
     width: 100%;
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:   30px 0;
+    padding: 0 20px;
+    border-left: 10px solid #000;
+    border-right: 10px solid #000;
+    box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+    box-sizing: border-box;
   }
 
   footer {
@@ -1192,20 +1228,46 @@ footer div.copyright{
     margin: 0 auto;
     text-align:center;
   }
+  nav.f_nav{
+    margin: 80px 0;
+  }
   footer > div.f_container > nav.f_nav > div.foreign_currency{
     display: flex;
     justify-content: center;
     align-items:center;
+    margin: 50px 0;
   }
 
   footer > div.f_container > nav.f_nav > div.sns{
     display: flex;
     justify-content: center;
     align-items:center;
+    margin: 50px 0;
   }
+
   footer > div.copyright{
-    margin: 0 auto;
-    text-align:center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .f_contact{
+   margin-top: 80px;
+  }
+
+  .f_contact a{
+    font-size: 1.2rem;
+    background-color: #000;
+    font-weight: bold;
+    color: #fff;
+    padding: 25px 80px;
+    border: 2px solid #000;
+    box-shadow:rgb(0 0 0 / 25%) 1px 1px 10px;
+  }
+
+  .f_contact a:hover{
+    color: #000;
+    background-color: transparent;
+    box-shadow: none;
   }
 
   }

@@ -467,9 +467,9 @@ header div.h_container {
       "... ...... ...... ...... ...... ...... ......  ...... ..."
       "... notice notice notice notice notice notice  notice ..." 30px
       "... ...... ...... ...... ...... ...... ......  ...... ..." 10vh
-      "... ...... h_logo ...... h_nav  h_nav  h_icon  ...... ..." 50px
+      "... ...... h_logo ...... h_nav  h_nav  h_nav   ...... ..." 50px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
-    / auto 10vw 0.5fr 1fr 1fr 1fr 1fr 10vw auto;
+    / auto 10vw 0.5fr 0.5fr 1fr 1fr 1fr 10vw auto;
 }
 header div.h_container > div.notice{
   grid-area: notice;
@@ -532,18 +532,16 @@ nav.h_nav ul li a{
   color: #fff;
 }
 
-header div.h_container > div.base_icon {
-  grid-area: h_icon;
+nav.h_nav ul li > div.base_icon {
   display: flex;
   align-items:center;
-  justify-content: flex-end;
 }
 
-header div.h_container > div.base_icon div{
+nav.h_nav ul li > div.base_icon div{
   margin-left: 2vw;
 }
 
-header div.h_container > div.base_icon div span{
+nav.h_nav ul li > div.base_icon div span{
   display: block;
   max-width: 50px;
   max-height: 50px;
@@ -553,8 +551,12 @@ header div.h_container > div.base_icon div span{
   border-radius: 50%;
 }
 
-header div.h_container > div.base_icon div span a{
+nav.h_nav ul li > div.base_icon div span a{
   display: block;
+}
+
+header div.h_container > div.sp_base_icon{
+  display: none;
 }
 
 .scrolldown{
@@ -891,19 +893,18 @@ footer div.copyright{
     align-items:center;
   }
 
-  header div.h_container > div.base_icon{
+  header div.h_container > div.sp_base_icon{
     grid-area: h_icon;
     display:flex;
     justify-content: center;
     align-items:center;
-    display:box;
   }
 
-  header div.h_container > div.base_icon div{
+  header div.h_container > div.sp_base_icon div{
     margin-left: 2vw;
   }
 
-  header div.h_container > div.base_icon div span{
+  header div.h_container > div.sp_base_icon div span{
     display: block;
     width: 7vw;
     height: 7vw;

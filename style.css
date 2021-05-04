@@ -330,7 +330,9 @@ div.swiper-slide{
 }
 
 .swiper-slide img{
-  height: 100%;
+  object-fit: cover;
+  height: 130%;
+  object-position: 50% 50%;
 }
 
 .swiper-button-next:after,
@@ -448,7 +450,7 @@ body div#container {
     "... ...... ...... ...... ...... ...... ...... ..."
     "... header header header header header header ..." 50vh
     "... ...... ...... ...... ...... ...... ...... ..." 35vh
-    "... slider slider slider slider slider slider ..." 36vh
+    "... slider slider slider slider slider slider ..." 200px
     "... ...... ...... ...... ...... ...... ...... ..." 6vh
     "... ...... left   ...... center center ...... ..." 1fr
     "... ...... ...... ...... ...... ...... ...... ..." 20vh
@@ -837,7 +839,7 @@ footer div.copyright{
     "... ....... ...... ...... ..."
     "... header  header header ..." 100px
     "... ....... ...... ...... ..." 84vh
-    "... slider  slider slider ..." 34vh
+    "... slider  slider slider ..." 220px
     "... ....... ...... ...... ..." 4vh
     "... ....... center ...... ..." 1fr
     "... ....... ...... ...... ..."

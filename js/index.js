@@ -54,8 +54,8 @@ function mediaQueriesWin(){
 });
 
 $(window).on('load', function () {
-  $(".op-loading").delay(1200).fadeOut('slow');
-  $(".spinner").delay(1500).fadeOut('slow',function(){
+  $(".op_load").delay(1200).fadeOut('slow');
+  $(".op_load_text").addClass('visible').delay(1500).fadeOut('slow',function(){
   $('body').addClass('appear');
   });
   $('.splashbg').on('animationend', function() {

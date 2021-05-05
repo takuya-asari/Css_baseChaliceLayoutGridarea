@@ -54,16 +54,9 @@ function mediaQueriesWin(){
 });
 
 $(window).on('load', function () {
-  $(".op-loading").delay(1200).fadeOut('slow');
-  $(".spinner").delay(1500).fadeOut('slow',function(){
-  $('body').addClass('appear');
-  });
-  $('.splashbg').on('animationend', function() {
-      //この中に動かしたいJSを記載
     $('.mv,.logo').addClass('zoomOut');
     mediaQueriesWin();
     fadeAnime();
-  });
 });
 
  // ハンバーガーメニュー
@@ -73,41 +66,3 @@ element.classList.toggle('active');
 var element = document.getElementById("menu_btn_inner");
 element.classList.toggle('active');
 };
-
- // スライドショー
-const swiper = new Swiper('.swiper-container', {
-  loop: true,
-  autoplay: true,
-  centeredSlides: true,
-  speed: 800,
-  delay: 1000,
-  breakpoints: {
-    0: {
-      slidesPerView: 1.5,
-      spaceBetween:20,
-    },
-    640: {
-      slidesPerView: 3.5,
-      spaceBetween:25,
-    },
-    1280: {
-      slidesPerView: 5.5,
-      spaceBetween:25,
-    },
-    1920: {
-      slidesPerView: 7.5,
-      spaceBetween:25,
-    },
-  },
-
-
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});

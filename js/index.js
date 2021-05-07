@@ -106,8 +106,12 @@ const swiper = new Swiper('.swiper-container', {
       slidesPerView: 4.5,
       spaceBetween:25,
     },
+    1480: {
+      slidesPerView: 5.5,
+      spaceBetween:25,
+    },
     1920: {
-      slidesPerView: 7.5,
+      slidesPerView: 6.5,
       spaceBetween: 25,
     },
   },

@@ -487,10 +487,10 @@ header div.h_container {
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
       "... notice notice notice notice notice notice  notice ..." 30px
-      "... ...... ...... ...... ...... ...... ......  ...... ..." 10vh
-      "... ...... h_logo ...... h_nav  h_nav  h_nav   ...... ..." 50px
+      "... ...... ...... ...... ...... ...... ......  ...... ..." 150px
+      "... ...... h_logo ...... h_nav  h_nav  h_nav   ...... ..." 100px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
-    / auto 10vw 0.5fr 0.1fr 2fr 2fr 2fr 10vw auto;
+    / auto 10vw 200px 0.1fr 2fr 2fr 2fr 10vw auto;
 }
 header div.h_container > div.notice{
   grid-area: notice;
@@ -506,7 +506,7 @@ header div.h_container > div.mv{
 }
 
 header div.h_container > div.mv img{
-  width: 100vw;
+  width: 100%;
   height:80vh;
   object-fit: cover;
 }
@@ -515,13 +515,12 @@ header div.h_container > div.logo{
   grid-area: h_logo;
   display:flex;
   align-items:center;
+  justify-content: flex-start;
 }
 
 header div.h_container > div.logo h1 img{
  max-width: 250px;
  max-height: 100px;
- width: 20vw;
- height: 10vw;
  object-fit: contain;
 }
 
@@ -923,7 +922,7 @@ footer div.copyright{
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 160px
-    "... ....... ...... ...... ..." 70vh
+    "... ....... ...... ...... ..." 730px
     "... slider  slider slider ..." 220px
     "... ....... ...... ...... ..." 4vh
     "... ....... center ...... ..." 1fr
@@ -945,7 +944,7 @@ footer div.copyright{
     grid-template:
         "... ...... ...... ...... ...... ...... ......  ...... ..."
         "... notice notice notice notice notice notice  notice ..." 30px
-        "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
+        "... ...... ...... ...... ...... ...... ......  ...... ..." 70px
         "... ...... button ...... h_logo ...... h_icon  ...... ..." 50px
         "... ...... ...... ...... ...... ...... ......  ...... ..."
       / auto 5vw 1fr 1fr 1fr 1fr 1fr 5vw auto;
@@ -963,8 +962,9 @@ footer div.copyright{
   }
 
   header div.h_container > div.logo h1 img{
-    max-width: 40vw;
-    max-height: 30vw;
+    max-width: 200px;
+    max-height: 100px;
+    object-fit: contain;
    }
 
    .menu_btn,
@@ -1010,12 +1010,12 @@ footer div.copyright{
     left: 0;
     z-index: -100;
     width: 100vw;
-    height:90vh;
+    height:870px;
   }
 
   header div.h_container > div.mv img{
     width: 100vw;
-    height:90vh;
+    height:870px;
     object-fit: cover;
   }
 

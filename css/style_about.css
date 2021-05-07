@@ -303,8 +303,8 @@ body div#container {
   display: grid;
   grid-template:
     "... ...... ...... ...... ...... ...... ...... ..."
-    "... header header header header header header ..." 30vh
-    "... ...... ...... ...... ...... ...... ...... ..." 9vh
+    "... header header header header header header ..." 230px
+    "... ...... ...... ...... ...... ...... ...... ..." 50px
     "... ...... left   ...... center center ...... ..." 1fr
     "... ...... ...... ...... ...... ...... ...... ..." 20vh
     "... footer footer footer footer footer footer ..." 20vh
@@ -321,10 +321,10 @@ header div.h_container {
   grid-template:
       "... ...... ...... ...... ...... ...... ......  ...... ..."
       "... notice notice notice notice notice notice  notice ..." 30px
-      "... ...... ...... ...... ...... ...... ......  ...... ..." 10vh
-      "... ...... h_logo ...... h_nav  h_nav  h_nav   ...... ..." 50px
+      "... ...... ...... ...... ...... ...... ......  ...... ..." 50px
+      "... ...... h_logo ...... h_nav  h_nav  h_nav   ...... ..." 100px
       "... ...... ...... ...... ...... ...... ......  ...... ..."
-    / auto 10vw 0.5fr 0.1fr 2fr 2fr 2fr 10vw auto;
+    / auto 10vw 200px 0.1fr 2fr 2fr 2fr 10vw auto;
 }
 header div.h_container > div.notice{
   grid-area: notice;
@@ -360,13 +360,12 @@ header div.h_container > div.logo{
   grid-area: h_logo;
   display:flex;
   align-items:center;
+  justify-content: flex-start;
 }
 
 header div.h_container > div.logo h1 img{
  max-width: 250px;
  max-height: 100px;
- width: 20vw;
- height: 10vw;
  object-fit: contain;
 }
 
@@ -670,7 +669,7 @@ footer div.copyright{
     grid-template:
     "... ....... ...... ...... ..."
     "... header  header header ..." 160px
-    "... ....... ...... ...... ..." 4vh
+    "... ....... ...... ...... ..." 50px
     "... ....... center ...... ..." 0.5fr
     "... ....... ...... ...... ..."
     "... ....... left   ...... ..." 0.25fr
@@ -690,7 +689,7 @@ footer div.copyright{
     grid-template:
         "... ...... ...... ...... ...... ...... ......  ...... ..."
         "... notice notice notice notice notice notice  notice ..." 30px
-        "... ...... ...... ...... ...... ...... ......  ...... ..." 5vh
+        "... ...... ...... ...... ...... ...... ......  ...... ..." 40px
         "... ...... button ...... h_logo ...... h_icon  ...... ..." 50px
         "... ...... ...... ...... ...... ...... ......  ...... ..."
       / auto 5vw 1fr 1fr 1fr 1fr 1fr 5vw auto;
@@ -708,8 +707,9 @@ footer div.copyright{
   }
 
   header div.h_container > div.logo h1 img{
-    max-width: 40vw;
-    max-height: 30vw;
+    max-width: 200px;
+    max-height: 100px;
+    object-fit: contain;
    }
 
    .menu_btn,
@@ -941,6 +941,10 @@ footer div.copyright{
   }
   div.about{
     width: 100%;
+  }
+
+  div.about h2{
+    margin-top: 0;
   }
   div.about_img{
     width: 100%;
